@@ -29,12 +29,18 @@ end
 def update
 @recipe = Recipe.find(params[:id])
 if @recipe.update(recipe_params)
-flash[:success] = "Recipe was created sucessfuly!"
+flash[:success] = "Recipe was updated sucessfuly!"
 redirect_to recipe_path(@recipe)
 else
 render 'edit'
 
  end	
+end
+
+def destroy
+Recipe.find(params[:id]).destroy
+flash[:success] = "Recipe was deletd sucessfuly!"
+redirect_to recipe_path
 end
 
 private
